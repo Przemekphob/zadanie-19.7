@@ -1,4 +1,4 @@
-import {ADD_COMMENT, THUMB_UP_COMMENT, THUMB_DOWN_COMMENT} from './actions';
+import {ADD_COMMENT, REMOVE_COMMENT, THUMB_UP_COMMENT, THUMB_DOWN_COMMENT} from './actions';
 
 function comments(state = [], action) {
     switch(action.type) {
@@ -25,6 +25,9 @@ function comments(state = [], action) {
                 }
                 return comment;
             });
+
+        case REMOVE_COMMENT:
+            return state.filter(comment => comment.id !== action.id);  
 
         default:
             return state;
