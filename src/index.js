@@ -5,10 +5,15 @@ import App from './App';
 
 import { Provider } from 'react-redux';
 import reducer from './reducer.js';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import DevTools from './DevTools';
 import {addComment} from './actions.js';
 
-const store = createStore(reducer);
+
+const store = createStore(
+  reducer,
+  DevTools.instrument()
+);
 
 ReactDOM.render(
   	<Provider store={store}>
